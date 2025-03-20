@@ -1,0 +1,11 @@
+{
+    "CHANNEL_ID": "1341351337069248512",
+    "MENTION_CHANNEL_ID": "1336275024969076799",
+    "SPREADSHEET_ID": "1CrSARzGbg7xf0FI7A0UzWT3Ql3-CGQVFcpNqdb6C7f8",
+    "SERVICE_ACCOUNT_INFO": {
+        "project_id": "para-sar-bot",
+        "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+        "token_uri": "https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs"
+    }
+}
