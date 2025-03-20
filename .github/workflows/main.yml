@@ -1,0 +1,40 @@
+name: Run Discord Bot
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"  # Executa a cada 6 horas
+  push:
+    branches:
+      - main  # Executa quando houver push na branch "main"
+  workflow_dispatch:  # Permite iniciar manualmente
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🚀 Checkout do código
+        uses: actions/checkout@v4
+
+      - name: 🛠️ Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: 📦 Instalar dependências
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: ▶️ Rodar o bot
+        env:
+          DISCORD_BOT_TOKEN: ${{ secrets.DISCORD_BOT_TOKEN }}
+          GOOGLE_CLIENT_EMAIL: ${{ secrets.GOOGLE_CLIENT_EMAIL }}
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+          GOOGLE_PRIVATE_KEY_ID: ${{ secrets.GOOGLE_PRIVATE_KEY_ID }}
+          GOOGLE_PROJECT_ID: ${{ secrets.GOOGLE_PROJECT_ID }}
+          CHANNEL_ID: ${{ secrets.CHANNEL_ID }}
+          MENTION_CHANNEL_ID: ${{ secrets.MENTION_CHANNEL_ID }}
+          SPREADSHEET_ID: ${{ secrets.SPREADSHEET_ID }}
+        run: python bot.py  # Certifique-se de que o nome do script está correto
